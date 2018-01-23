@@ -15,6 +15,10 @@ nimble_ssl_certificate: /etc/nimble/ssl/cert.pem
 nimble_ssl_certificate_key: /etc/nimble/ssl/cert-key.pem
 
 
+nimble_wmspanel_username: 
+nimble_wmspanel_password: 
+nimble_recovery_id:
+
 nimble_user: nimble
 
 nimble_transcoder: false
