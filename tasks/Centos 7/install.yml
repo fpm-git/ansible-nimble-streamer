@@ -19,8 +19,6 @@
     state: latest
   when: nimble_transcoder
   
-  
-  
 - name: Enable service nimble and ensure it is not masked
   systemd:
     name: nimble
@@ -29,5 +27,5 @@
 
 - name: Make sure nimble service is running
   systemd: 
-    name: httpd
+    name: nimble
     state: started 
