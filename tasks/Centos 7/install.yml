@@ -2,6 +2,7 @@
 - name: Add Nimble Streamer repository (Centos 7)
   yum_repository: 
     name: Nimble Streamer repository 
+    description: Nimble Streamer repo
     baseurl: http://nimblestreamer.com/centos/7/$basearch 
     enabled: yes
     gpgcheck: yes
@@ -18,12 +19,8 @@
     state: latest
   when: nimble_transcoder
   
-- name: Enable service nimble and ensure it is not masked
-  systemd:
-    name: nimble
-    enabled: yes
-    masked: no
-
+  
+  
 - name: Enable service nimble and ensure it is not masked
   systemd:
     name: nimble
