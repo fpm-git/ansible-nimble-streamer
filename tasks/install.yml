@@ -18,7 +18,8 @@
   register: install_task
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version > '6'
   
-- set_fact: install_task_ran="{{make_password}}"
+- name: Check that the install task ran
+  set_fact: install_task_ran="{{install_task}}"
   when: install_task.changed
 
 # Fail the Ansible role if none of the install task was included
