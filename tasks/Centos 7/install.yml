@@ -1,8 +1,8 @@
 ---
 - name: Add Nimble Streamer repository (Centos 7)
   yum_repository: 
-    name: Nimble Streamer repository 
-    description: Nimble Streamer repo
+    name: nimble 
+    description: Nimble Streamer repository 
     baseurl: http://nimblestreamer.com/centos/7/$basearch 
     enabled: yes
     gpgcheck: yes
