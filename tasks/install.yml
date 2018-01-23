@@ -15,14 +15,13 @@
   
   
 - include: "Centos 7/install.yml"
-  register: install_task
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version > '6'
   
 - name: Check that the install task ran
-  set_fact: install_task_ran="{{install_task}}"
-  when: install_task.changed
+  set_fact: install_task_ran="true"
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version > '6'
 
 # Fail the Ansible role if none of the install task was included
 - fail:
     msg: "Your current OS is not supported by this Ansible Role."
-  when: install_task_ran
+  when: install_task_ran is undefined
