@@ -1,0 +1,6 @@
+---
+## Installation options
+
+nimble_user: nimble
+
+nimble_transcoder: false

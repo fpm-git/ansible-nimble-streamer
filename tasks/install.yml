@@ -1,0 +1,27 @@
+---
+- name: Check if nimble user exists (ignore errors)
+  command: id {{ nimble_user }}
+  ignore_errors: yes
+  changed_when: false
+  register: nimble_user_exists
+  
+- name: Add nimble user
+  user:
+    name: "{{ nimble_user }}"
+    comment: "Nimble user"
+    shell: /bin/false
+    system: yes
+  when: nimble_user_exists|failed
+  
+  
+- include: "Centos 7/install.yml"
+  register: install_task
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version > '6'
+  
+- set_fact: install_task_ran="{{make_password}}"
+  when: install_task.changed
+
+# Fail the Ansible role if none of the install task was included
+- fail:
+    msg: "Your current OS is not supported by this Ansible Role."
+  when: install_task_ran

@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: Floatplane Media Inc.
+  description: Role to install Nimble Streamer
+  min_ansible_version: 2.1
+  license: MIT
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  categories:
+    - streaming
+
+dependencies: []
