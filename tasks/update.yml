@@ -1,0 +1,2 @@
+- include: "Centos 7/update.yml"
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version > '6'

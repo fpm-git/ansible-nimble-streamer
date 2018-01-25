@@ -1,0 +1,210 @@
+port = {{ nimble_port|default(8081) }}
+worker_threads = {{ nimble_worker_threads|default(1) }}
+{% if nimble_transmuxer_threads -%}
+transmuxer_threads = {{ nimble_transmuxer_threads }}
+{% endif -%}
+{% if nimble_listen_interfaces -%}
+listen_interfaces = {{ nimble_listen_interfaces }}
+{% endif -%}
+{% if nimble_enable_ipv6 -%}
+enable_ipv6 = {{ nimble_enable_ipv6 }}
+{% endif -%}
+{% if nimble_restrict_session_ip -%}
+restrict_session_ip = {{ nimble_restrict_session_ip }}
+{% endif -%}
+{% if nimble_cdn_origin -%}
+cdn_origin = {{ nimble_cdn_origin }}
+{% endif -%}
+{% if nimble_user_agent -%}
+user_agent = {{ nimble_user_agent }}
+{% endif -%}
+{% if nimble_session_timeout -%}
+session_timeout = {{ nimble_session_timeout }}
+{% endif -%}
+{% if nimble_pass_headers -%}
+pass_headers = {{ nimble_pass_headers }}
+{% endif -%}
+{% if nimble_passed_header_prefix -%}
+passed_header_prefix = {{ nimble_passed_header_prefix }}
+{% endif -%}
+{% if nimble_absolute_path -%}
+absolute_path = {{ nimble_absolute_path }}
+{% endif -%}
+{% if nimble_update_geoip_database -%}
+update_geoip_database = {{ nimble_update_geoip_database }}
+{% endif -%}
+{% if nimble_custom_pd_exts -%}
+custom_pd_exts = {{ nimble_custom_pd_exts }}
+{% endif -%}
+{% if nimble_enable_pd_for_remote_vod -%}
+enable_pd_for_remote_vod = {{ nimble_enable_pd_for_remote_vod }}
+{% endif -%}
+{% if nimble_vod_subtitle_default_language_id -%}
+vod_subtitle_default_language_id = {{ nimble_vod_subtitle_default_language_id }}
+{% endif -%}
+{% if nimble_mpegts_for_audio_vod -%}
+mpegts_for_audio_vod = {{ nimble_mpegts_for_audio_vod }}
+{% endif -%}
+{% if nimble_mpegts_inactivity_check_interval -%}
+mpegts_inactivity_check_interval = {{ nimble_mpegts_inactivity_check_interval }}
+{% endif -%}
+{% if nimble_udp_so_receive_buffer -%}
+udp_so_receive_buffer = {{ nimble_udp_so_receive_buffer }}
+{% endif -%}
+
+{% if nimble_video_index -%}
+nimble_video_index = {{ nimble_video_index }}
+{% endif -%}
+{% if nimble_audio_index -%}
+nimble_audio_index = {{ nimble_audio_index }}
+{% endif -%}
+
+###############################################
+# Log Configuration
+###############################################
+logging = {{ nimble_logging|default("info") }}
+{% if nimble_log_access -%}
+log_access = {{ nimble_log_access }}
+{% endif -%}
+{% if nimble_log_sessions -%}
+log_sessions = {{ nimble_log_sessions }}
+{% endif -%}
+{% if nimble_max_log_file_size -%}
+max_log_file_size = {{ nimble_max_log_file_size }}
+{% endif -%}
+{% if nimble_max_log_files_to_keep -%}
+max_log_files_to_keep = {{ nimble_max_log_files_to_keep }}
+{% endif -%}
+
+###############################################
+# CORS related Configuration
+###############################################
+{% if nimble_access_control_allow_origin -%}
+access_control_allow_origin = {{ nimble_access_control_allow_origin }}
+{% endif -%}
+{% if nimble_access_control_allow_credentials -%}
+access_control_allow_credentials = {{ nimble_access_control_allow_credentials }}
+{% endif -%}
+{% if nimble_access_control_expose_headers -%}
+access_control_expose_headers = {{ nimble_access_control_expose_headers }}
+{% endif -%}
+{% if nimble_access_control_allow_headers -%}
+access_control_allow_headers = {{ nimble_access_control_allow_headers }}
+{% endif -%}
+{% if nimble_crossdomain_xml_allow_access_from_domain -%}
+crossdomain_xml_allow_access_from_domain = {{ nimble_crossdomain_xml_allow_access_from_domain }}
+{% endif -%}
+{% if nimble_crossdomain_xml -%}
+crossdomain_xml = {{ nimble_crossdomain_xml }}
+{% endif -%}
+
+
+###############################################
+# HLS related Configuration
+###############################################
+{% if nimble_hls_add_closed_caption_none -%}
+hls_add_closed_caption_none = {{ nimble_hls_add_closed_caption_none }}
+{% endif -%}
+{% if nimble_hls_add_closed_caption_none -%}
+hls_add_closed_caption_none = {{ nimble_hls_add_closed_caption_none }}
+{% endif -%}
+
+
+###############################################
+# Websocket related Configuration
+###############################################
+{% if nimble_rtmp_max_viewers -%}
+rtmp_max_viewers = {{ nimble_rtmp_max_viewers }}
+{% endif -%}
+{% if nimble_rtmp_working_thread -%}
+rtmp_working_thread = {{ nimble_rtmp_working_thread }}
+{% endif -%}
+{% if nimble_rtmp_buffer_items -%}
+rtmp_buffer_items = {{ nimble_rtmp_buffer_items }}
+{% endif -%}
+
+
+###############################################
+# Websocket related Configuration
+###############################################
+{% if nimble_websocket_live_max_viewers -%}
+websocket_live_max_viewers = {{ nimble_websocket_live_max_viewers }}
+{% endif -%}
+{% if nimble_websocket_live_worker_threads -%}
+websocket_live_worker_threads = {{ nimble_websocket_live_worker_threads }}
+{% endif -%}
+
+
+###############################################
+# Cache related configuration
+###############################################
+max_cache_size = {{ nimble_max_cache_size|default(64) }}
+cache_path = {{ nimble_cache_path|default("/var/cache/nimble") }}
+max_disk_cache_size = {{ nimble_max_disk_cache_size|default(0) }}
+{% if nimble_vod_cache_timeout -%}
+vod_cache_timeout = {{ nimble_vod_cache_timeout }}
+{% endif -%}
+{% if nimble_vod_cache_min_storage_time -%}
+vod_cache_min_storage_time = {{ nimble_vod_cache_min_storage_time }}
+{% endif -%}
+{% if nimble_vod_chunk_duration -%}
+vod_chunk_duration = {{ nimble_vod_chunk_duration }}
+{% endif -%}
+{% if nimble_vod_to_ram_cache_first -%}
+vod_to_ram_cache_first = {{ nimble_vod_to_ram_cache_first }}
+{% endif -%}
+{% if nimble_ram_cache_for_vod_threshold -%}
+ram_cache_for_vod_threshold = {{ nimble_ram_cache_for_vod_threshold }}
+{% endif -%}
+{% if nimble_playlist_cache_control -%}
+playlist_cache_control = {{ nimble_playlist_cache_control }}
+{% endif -%}
+{% if nimble_chunk_cache_control -%}
+chunk_cache_control = {{ nimble_chunk_cache_control }}
+{% endif -%}
+
+
+###############################################
+# parameters for management API
+#
+# management_port            -
+# nmanagement_listen_interfaces     -
+# management_token - 
+###############################################
+{% if nimble_management_api -%}
+management_port = {{ nimble_management_port|default(8090) }}
+management_listen_interfaces = {{ management_listen_interfaces|default("*") }}
+management_token = {{ nimble_management_token }}
+{% endif -%}
+
+
+###############################################
+# parameters for SSL
+#
+# ssl_port            -
+# ssl_certificate     -
+# ssl_certificate_key - 
+###############################################
+{% if nimble_ssl -%}
+ssl_port = {{ nimble_ssl_port|default(443) }}
+ssl_certificate = {{ nimble_ssl_certificate }}
+ssl_certificate_key = {{ nimble_ssl_certificate_key }}
+{% endif -%}
+
+
+###############################################
+# parameters to access wmspanel
+#   (will be filled by registration utility)
+#
+# panel_domain   - wmspanel server address
+# panel_port     - wmspanel server port
+# panel_uuid     - wmspanel account id
+# panel_password - wmspanel account password
+###############################################
+{% if nimble_panel_uuid.stdout and nimble_panel_password.stdout -%}
+panel_domain = nimble.wmspanel.com
+panel_port = 443
+panel_uuid = {{ nimble_panel_uuid.stdout }}
+panel_password = {{ nimble_panel_password.stdout }}
+panel_ssl_disabled = false
+{% endif -%}

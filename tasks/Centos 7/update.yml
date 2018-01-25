@@ -1,0 +1,19 @@
+- name: Update Nimble Streamer
+  yum:
+    name: nimble
+    state: latest
+  register: nimble_update_status
+    
+- name: Update Nimble Transcoder
+  yum:
+    name: nimble-transcoder
+    state: latest
+  register: nimble_transcoder_update_status
+  when: nimble_transcoder
+
+- name: Restart Nimble Streamer service (Only if the package or the configuration was updated or nimble_force_service_restart = True)
+  systemd:
+    daemon_reload: yes
+    name: nimble
+    state: restarted
+  when: nimble_update_status.changed or nimble_transcoder_update_status.changed or nimble_force_service_restart or nimble_config_file_status.changed

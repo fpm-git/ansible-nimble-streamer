@@ -1,0 +1,12 @@
+- name: Restore WMSPanel server registration using recovery id
+  become: yes
+  register: nimble_register_recovery_status
+  shell: "/usr/bin/nimble_regutil --recovery-id {{nimble_recovery_id}}"
+  when: nimble_recovery_id
+
+- name: Register server with WMSPanel using username and password
+  become: yes
+  register: nimble_register_userpass_status
+  shell: "/usr/bin/nimble_regutil -u '{{nimble_wmspanel_username}}' -p '{{nimble_wmspanel_password}}'"
+  when: nimble_wmspanel_username and nimble_wmspanel_password and nimble_register_recovery_status.changed == false
+ 

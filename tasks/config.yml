@@ -1,0 +1,48 @@
+- name: Run Nimble Streamer as root
+  become: yes
+  register: nimble_streamer_as_root_status
+  copy:
+    content: ""
+    dest: /etc/nimble/run_as_root
+    force: no
+    group: root
+    owner: root
+    mode: 0644
+  when: nimble_run_as_root
+  
+- name: Run Nimble Streamer as {{ nimble_user }}
+  become: yes
+  register: nimble_streamer_as_user_status
+  file:
+    state: absent
+    path: "/etc/nimble/run_as_root/"
+  when: nimble_run_as_root == false
+  
+- name: Verify if Nimble is registered
+  register: nimble_registered_status
+  shell: sed -n 's/^panel_uuid = //p' /etc/nimble/nimble.conf
+
+- include: register.yml
+  tags:
+    - register
+  when: nimble_registered_status.stdout == ""
+  
+- name: Get WMSPanel panel uuid
+  register: nimble_panel_uuid
+  shell: sed -n 's/^panel_uuid = //p' /etc/nimble/nimble.conf
+  
+- name: Get WMSPanel panel password
+  register: nimble_panel_password
+  shell: sed -n 's/^panel_password = //p' /etc/nimble/nimble.conf
+  
+- name: Setup config file
+  become: yes
+  register: nimble_config_file_status
+  template:
+    src: nimble.conf.j2
+    dest: /etc/nimble/nimble.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- debug: msg='{{nimble_config_file_status}}'  

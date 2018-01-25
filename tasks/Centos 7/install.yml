@@ -8,16 +8,20 @@
     gpgcheck: yes
     gpgkey: http://nimblestreamer.com/gpg.key
     
-- name: Install the latest version of Nimble Streamer
+- name: Install Nimble Streamer
   yum:
-    name: nimble
-    state: latest
+    name: "nimble-{{nimble_streamer_version|default(3)}}*"
+    state: present
     
-- name: Install the latest version of Nimble Transcoder
+- name: Install Nimble Transcoder
   yum:
     name: nimble-transcoder
-    state: latest
+    state: present
   when: nimble_transcoder
+  
+- include: config.yml
+  tags:
+    - config
   
 - name: Enable service nimble and ensure it is not masked
   systemd:
@@ -29,3 +33,5 @@
   systemd: 
     name: nimble
     state: started 
+    
+# TODO: Reload if "Install Nimble Streamer" task installed a new version
