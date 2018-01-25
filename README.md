@@ -61,7 +61,7 @@ Here's an example playbook with some firewall tasks to open ports for nimble str
         permanent: true
         immediate: true
         state: enabled
-	  when: nimble_ssl
+      when: nimble_ssl
         
     # ETH1 (Private Network)
     - firewalld:
@@ -90,7 +90,7 @@ Here's an example playbook with some firewall tasks to open ports for nimble str
         permanent: true
         immediate: true
         state: enabled
-	  when: nimble_ssl
+      when: nimble_ssl
 ```
 
 ## Role Variables
