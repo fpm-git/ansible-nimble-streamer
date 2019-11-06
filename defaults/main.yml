@@ -39,6 +39,7 @@ nimble_vod_subtitle_default_language_id:
 nimble_mpegts_for_audio_vod:
 nimble_mpegts_inactivity_check_interval:
 nimble_udp_so_receive_buffer:
+nimble_keep_request_params_enabled:
 
 nimble_video_index:
 nimble_audio_index:
