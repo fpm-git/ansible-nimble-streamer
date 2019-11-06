@@ -51,6 +51,9 @@ mpegts_inactivity_check_interval = {{ nimble_mpegts_inactivity_check_interval }}
 {% if nimble_udp_so_receive_buffer -%}
 udp_so_receive_buffer = {{ nimble_udp_so_receive_buffer }}
 {% endif -%}
+{% if keep_request_params_enabled -%}
+keep_request_params_enabled = {{ keep_request_params_enabled }}
+{% endif -%}
 
 {% if nimble_video_index -%}
 nimble_video_index = {{ nimble_video_index }}
