@@ -137,6 +137,7 @@ nimble_custom_pd_exts:
 nimble_enable_pd_for_remote_vod:
 nimble_vod_subtitle_default_language_id:
 nimble_mpegts_for_audio_vod:
+nimble_vod_transmuxing_buffer:
 nimble_mpegts_inactivity_check_interval:
 nimble_udp_so_receive_buffer:
 
