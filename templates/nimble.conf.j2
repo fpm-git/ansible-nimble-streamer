@@ -45,6 +45,9 @@ vod_subtitle_default_language_id = {{ nimble_vod_subtitle_default_language_id }}
 {% if nimble_mpegts_for_audio_vod -%}
 mpegts_for_audio_vod = {{ nimble_mpegts_for_audio_vod }}
 {% endif -%}
+{% if nimble_vod_transmuxing_buffer -%}
+vod_transmuxing_buffer = {{ nimble_vod_transmuxing_buffer }}
+{% endif -%}
 {% if nimble_mpegts_inactivity_check_interval -%}
 mpegts_inactivity_check_interval = {{ nimble_mpegts_inactivity_check_interval }}
 {% endif -%}
