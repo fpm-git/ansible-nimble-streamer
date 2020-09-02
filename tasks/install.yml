@@ -11,7 +11,7 @@
     comment: "Nimble user"
     shell: /bin/false
     system: yes
-  when: nimble_user_exists|failed
+  when: nimble_user_exists is failed
   
   
 - include: "Centos 7/install.yml"
